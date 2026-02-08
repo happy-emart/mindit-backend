@@ -1,0 +1,17 @@
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+supabase==2.3.4
+playwright==1.41.2
+beautifulsoup4==4.12.3
+google-generativeai==0.3.2
+python-multipart==0.0.9
+python-dotenv==1.0.1
+pydantic==2.6.1
+httpx==0.26.0
+pyjwt==2.8.0
+cryptography==42.0.2
+requests==2.31.0
+youtube-transcript-api==0.6.2
+sqlalchemy==2.0.27
+asyncpg==0.29.0
+
