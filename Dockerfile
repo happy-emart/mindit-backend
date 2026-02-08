@@ -7,9 +7,10 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy requirements and install dependencies
+# Copy requirements and install dependencies (uv: faster resolver, no pip backtracking hell)
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install uv && \
+    uv pip install --system --no-cache -r requirements.txt
 
 # Install Playwright browsers (Webkit is usually enough for scraping, or Chromium)
 # Installing all for safety, but can be optimized later.
