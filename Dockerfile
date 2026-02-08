@@ -1,9 +1,5 @@
-FROM python:3.10-slim
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Official Playwright Python image: Chromium + deps pre-installed, no ttf-unifont hell
+FROM mcr.microsoft.com/playwright/python:v1.41.2-jammy
 
 WORKDIR /app
 
@@ -11,10 +7,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install uv && \
     uv pip install --system --no-cache -r requirements.txt
-
-# Install Playwright browsers (Webkit is usually enough for scraping, or Chromium)
-# Installing all for safety, but can be optimized later.
-RUN playwright install --with-deps chromium
 
 # Copy application code
 COPY . .
